@@ -22,6 +22,18 @@ public class UserRepository {
         userDatabase = new FileDatabase<User>("DB.txt");
     }
 
+    public UserRepository(
+        PhoneValidator phoneValidator,
+        EmailValidator emailValidator,
+        PasswordChecker passwordChecker,
+        FileDatabase<User> userDatabase)
+        {
+            this.phoneValidator = phoneValidator;
+            this.emailValidator = emailValidator;
+            this.passwordChecker = passwordChecker;
+            this.userDatabase = userDatabase;
+        }
+
 
     public User GetUser(UUID id) {
         return userDatabase.Get(id);
